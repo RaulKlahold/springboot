@@ -1,6 +1,7 @@
 package com.example.springboot.models;
 
 import jakarta.persistence.*;
+import org.springframework.hateoas.RepresentationModel;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.io.Serial;
@@ -10,7 +11,8 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "TB_PRODUCTS")
-public class ProductModel implements Serializable {
+public class ProductModel extends RepresentationModel<ProductModel> implements Serializable {
+
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -19,6 +21,14 @@ public class ProductModel implements Serializable {
     private UUID idProduct;
     private String name;
     private BigDecimal value;
+
+    public  UUID getIdProduct(){
+        return idProduct;
+    }
+    public void setIdProduct(UUID idProduct){
+        this.idProduct = idProduct;
+
+    }
 
 
 }
